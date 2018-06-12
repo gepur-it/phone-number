@@ -1,0 +1,43 @@
+{
+  "name": "gepur-it/phone-number",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marina Mileva",
+      "email": "m934222258@gmail.com"
+    }
+  ],
+  "description": "Gepur ERP PhoneNumber doctrine type",
+  "keywords": [
+    "phone",
+    "number",
+    "doctrine",
+    "type"
+  ],
+  "homepage": "https://github.com/gepur-it/phone-number",
+  "require": {
+    "php": "^7.1",
+    "doctrine/dbal": ">=2.5.4",
+    "jms/serializer": "^1.10"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "GepurIt\\PhoneNumber\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "": "Tests"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "class": "GepurIt\\PhoneNumber\\PhoneNumber"
+  }
+}
