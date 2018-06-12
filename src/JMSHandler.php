@@ -4,9 +4,8 @@
  * @since: 29.05.18
  */
 
-namespace GepurIt\PhoneNumber\src;
+namespace GepurIt\PhoneNumber;
 
-use GepurIt\PhoneNumber\PhoneNumber;
 use JMS\Serializer\Context;
 use JMS\Serializer\GraphNavigator;
 use JMS\Serializer\Handler\SubscribingHandlerInterface;
