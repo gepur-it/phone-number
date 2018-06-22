@@ -31,7 +31,7 @@ class PhoneNumberValidator extends ConstraintValidator
         }
 
         if (empty($value->getNumber())) {
-            $this->context->buildViolation($constraint->blanc)
+            $this->context->buildViolation($constraint->blank)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
         }

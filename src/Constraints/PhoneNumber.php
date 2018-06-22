@@ -17,7 +17,7 @@ class PhoneNumber extends Constraint
 {
     public $invalid = 'The data nuber "{{ string }}" is not PhoneNumber.';
     public $null = 'The PhoneNumber "{{ string }}" can`t be null.';
-    public $blanc = 'The PhoneNumber "{{ string }}" can`t be blanc.';
+    public $blank = 'The PhoneNumber "{{ string }}" can`t be blank.';
     public $numeric = 'The PhoneNumber "{{ string }}" must be numeric.';
     public $less = 'The PhoneNumber "{{ string }}" must be grater than 10 symbols.';
     public $grater = 'The PhoneNumber "{{ string }}" must be less than 12 symbols.';
