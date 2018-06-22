@@ -21,8 +21,8 @@ class PhoneNumber
      */
     public function __construct(string $number)
     {
-        $number = mb_strcut($number, 0, PhoneNumberDoctrineType::TYPE_LENGTH);
-        $this->fullNumber = preg_replace("/[^0-9]/", "", $number);
+        $number = preg_replace("/[^0-9]/", "", $number);
+        $this->fullNumber = mb_strcut($number, 0, PhoneNumberDoctrineType::TYPE_LENGTH);
 
         if (isset($number[0]) && in_array($number[0], ['+', '*'])) {
             $this->fullNumber = $number[0].$this->fullNumber;
