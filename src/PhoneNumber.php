@@ -5,6 +5,7 @@
  */
 
 namespace GepurIt\PhoneNumber;
+use GepurIt\PhoneNumber\Constraints as Assert;
 
 /**
  * Class PhoneNumber
@@ -12,7 +13,10 @@ namespace GepurIt\PhoneNumber;
  */
 class PhoneNumber
 {
-    /** @var string fullNumber */
+    /**
+     * @var string fullNumber
+     * @Assert\PhoneNumber()
+     */
     private $fullNumber;
 
     /**
@@ -21,12 +25,8 @@ class PhoneNumber
      */
     public function __construct(string $number)
     {
-        $number = mb_strcut($number, 0, PhoneNumberDoctrineType::TYPE_LENGTH);
-        $this->fullNumber = preg_replace("/[^0-9]/", "", $number);
-
-        if (isset($number[0]) && in_array($number[0], ['+', '*'])) {
-            $this->fullNumber = $number[0].$this->fullNumber;
-        }
+        $number = preg_replace("/[^0-9]/", "", $number);
+        $this->fullNumber = mb_strcut($number, 0, PhoneNumberDoctrineType::TYPE_LENGTH);
     }
 
     /**
