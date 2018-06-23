@@ -29,31 +29,29 @@ class PhoneNumberValidator extends ConstraintValidator
         }
 
         if (null === $value) {
-            $this->context->buildViolation($constraint->null)
+            $this->context->buildViolation($constraint->nullMessage)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
         }
 
-        if (empty($value)) {
-            $this->context->buildViolation($constraint->blank)
+        $minLength = $payLoad->minLength??$constraint->minLength;
+        if (mb_strlen($value) < $minLength) {
+            $this->context->buildViolation($constraint->minLengthMessage)
                 ->setParameter('{{ string }}', $value)
+                ->setParameter('{{ minLength }}', $minLength)
                 ->addViolation();
         }
 
-        if (mb_strlen($value) < 10) {
-            $this->context->buildViolation($constraint->less)
+        $maxLength = $payLoad->maxLength??$constraint->maxLength;
+        if (mb_strlen($value) > $maxLength) {
+            $this->context->buildViolation($constraint->maxLengthMessage)
                 ->setParameter('{{ string }}', $value)
-                ->addViolation();
-        }
-
-        if (mb_strlen($value) > 12) {
-            $this->context->buildViolation($constraint->grater)
-                ->setParameter('{{ string }}', $value)
+                ->setParameter('{{ maxLength }}', $maxLength)
                 ->addViolation();
         }
 
         if (!preg_match('/^([0-9\s\-\+\(\)]*)$/', $value, $matches)) {
-            $this->context->buildViolation($constraint->numeric)
+            $this->context->buildViolation($constraint->numericMessage)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
         }

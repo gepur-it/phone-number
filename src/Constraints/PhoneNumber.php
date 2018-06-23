@@ -15,10 +15,21 @@ use Symfony\Component\Validator\Constraint;
  */
 class PhoneNumber extends Constraint
 {
-    public $invalid = 'The data nuber "{{ string }}" is not PhoneNumber.';
-    public $null = 'The PhoneNumber "{{ string }}" can`t be null.';
-    public $blank = 'The PhoneNumber "{{ string }}" can`t be blank.';
-    public $numeric = 'The PhoneNumber "{{ string }}" must be numeric.';
-    public $less = 'The PhoneNumber "{{ string }}" must be grater than 10 symbols.';
-    public $grater = 'The PhoneNumber "{{ string }}" must be less than 12 symbols.';
+    public $nullMessage = 'The PhoneNumber can`t be null.';
+    public $numericMessage = 'The PhoneNumber "{{ string }}" must be numeric.';
+    public $minLengthMessage = 'The PhoneNumber "{{ string }}" length must be grater or equals than {{ minLength }} symbols.';
+    public $maxLengthMessage = 'The PhoneNumber "{{ string }}" length must be less or equals  than {{ maxLength }} symbols.';
+    public $minLength = 10;
+    public $maxLength = 12;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTargets()
+    {
+        return [
+            self::CLASS_CONSTRAINT,
+            self::PROPERTY_CONSTRAINT,
+        ];
+    }
 }
