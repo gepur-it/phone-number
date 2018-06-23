@@ -11,7 +11,8 @@ namespace GepurIt\PhoneNumber\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
-use \GepurIt\PhoneNumber\PhoneNumber as PhoneNumberType;
+use Symfony\Component\Validator\Exception\UnexpectedTypeException;
+
 /**
  * Class IsPhoneNumberValidator
  * @package GepurIt\PhoneNumber
@@ -24,31 +25,29 @@ class PhoneNumberValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint)
     {
-        if (!$value instanceof PhoneNumberType) {
-            $this->context->buildViolation($constraint->invalid)
-                ->setParameter('{{ string }}', $value)
-                ->addViolation();
+        if (!$constraint instanceof PhoneNumber) {
+            throw new UnexpectedTypeException($constraint, __NAMESPACE__.'\PhoneNumber');
         }
 
-        if (empty($value->getNumber())) {
-            $this->context->buildViolation($constraint->blank)
-                ->setParameter('{{ string }}', $value)
-                ->addViolation();
-        }
-
-        if (null === $value->getNumber()) {
+        if (null === $value) {
             $this->context->buildViolation($constraint->null)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
         }
 
-        if (mb_strlen($value->getNumber()) < 10) {
+        if (empty($value)) {
+            $this->context->buildViolation($constraint->blank)
+                ->setParameter('{{ string }}', $value)
+                ->addViolation();
+        }
+
+        if (mb_strlen($value) < 10) {
             $this->context->buildViolation($constraint->less)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
         }
 
-        if (mb_strlen($value->getNumber()) > 12) {
+        if (mb_strlen($value) > 12) {
             $this->context->buildViolation($constraint->grater)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation();
