@@ -10,12 +10,12 @@ use GepurIt\PhoneNumber\Constraints as Assert;
 /**
  * Class PhoneNumber
  * @package GepurIt\PhoneNumber
+ * @Assert\PhoneNumber()
  */
 class PhoneNumber
 {
     /**
      * @var string fullNumber
-     * @Assert\PhoneNumber()
      */
     private $fullNumber;
 
