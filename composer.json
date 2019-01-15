@@ -28,7 +28,7 @@
   "require": {
     "php": "^7.1",
     "doctrine/dbal": ">=2.5.4",
-    "jms/serializer": ">=^1.10",
+    "jms/serializer": ">=1.10",
     "symfony/validator": ">=4.0"
   },
   "require-dev": {
