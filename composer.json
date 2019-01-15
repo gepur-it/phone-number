@@ -43,11 +43,5 @@
     "psr-4": {
       "": "Tests"
     }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev"
-    },
-    "class": "GepurIt\\PhoneNumber\\PhoneNumber"
   }
 }
